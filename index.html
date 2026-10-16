@@ -3,152 +3,239 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Sancho's Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sancho Felix | Portfolio & CV</title>
+  <style>
+    :root {
+      --bg-color: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --border-color: #e2e8f0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      background: var(--card-bg);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+      margin-bottom: 30px;
+    }
+
+    header img {
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--primary);
+    }
+
+    h1 {
+      margin: 0 0 10px 0;
+      font-size: 2.2rem;
+      color: var(--text-main);
+    }
+
+    .tagline {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    section {
+      background: var(--card-bg);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 10px;
+      margin-top: 0;
+      color: var(--primary);
+      font-size: 1.5rem;
+    }
+
+    .job, .edu-item, .cert-item {
+      margin-bottom: 20px;
+    }
+
+    .job:last-child, .edu-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .job-header, .edu-header {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      font-weight: bold;
+    }
+
+    .date {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    .skill-card {
+      background: var(--bg-color);
+      padding: 12px 15px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .nav-links a {
+      background: var(--primary);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+
+    .nav-links a:hover {
+      background: var(--primary-hover);
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <table cellspacing="20">
-    <tr>
-      <td><img src="images/Sancho.png" alt="Sancho profile picture" height="200" width="200" /></td>
-      <td>
-        <h1> Sancho Felix</h1>
-        <p><em>Network and Telecommunications Engineer | <Strong>Aspiring Social Engineer</Strong>.</em></p>
-        <p><em>Currently working as a Network associate for just over a year, I quench my everlasting thirst of learning by preparing for my CCNP, Ethical Hacking along with a weekly dose of Python.</em></p>
-      </td>
-    </tr>
-  </table>
-  <hr>
-  <h3><u>Work Experience</u></h3>
-  <table cellspacing="20">
 
-    <tr>
-      <td>July 8th, 2019 (Current)</td>
-      <td>Associate Network Engineer – Tenfour</td>
-      <td><a href="tenfour.html">Details</a></td>
-    </tr>
-    <tr>
-      <td>January 2nd – October 31st, 2019 </td>
-      <td>Telecommunications Engineer – Essence USA Inc</td>
-      <td><a href="Essence.html">Details</a></td>
-    </tr>
-    <tr>
-      <td>June 16th – August 11th, 2018 </td>
-      <td>Network Administrator - Emagination Tech Camps USA</td>
-      <td><a href="Emagination.html">Details</a></td>
-    </tr>
-    <tr>
-      <td>July 1st 2016 – June 24th, 2017</td>
-      <td>Service and Calibration Engineer - Tribotech India Pvt. Ltd.</td>
-      <td><a href="Tribotech.html">Details</a></td>
-    </tr>
-  </table>
+  <!-- Header / Hero Section -->
+  <header>
+    <img src="images/Sancho.png" alt="Sancho profile picture" height="150" width="150" />
+    <div>
+      <h1>Sancho Felix</h1>
+      <p class="tagline"><em>Technical Consulting Engineer at Cisco | Python & Web Developer</em></p>
+      <p>Building reliable networks, automating workflows with Python, and exploring modern web development and creative projects.</p>
+    </div>
+  </header>
 
-  <h3><u>Academic Qualifications</u></h3>
-  <table cellspacing="20">
-    <tr>
-      <td><strong><a href="https://www.njit.edu/">New Jersey Institute of Technology</a></strong></td>
-      <td>Master of Science in Telecommunications</td>
-      <td><strong>GPA of 3.95/4</strong></td>
-    </tr>
-    <tr>
-      <td><strong><a href="https://www.dbit.in/">Don Bosco Institute Of technology</a></strong></td>
-      <td>Bachelor of Engineering in Electronics and Telecommunications</td>
-      <td><strong>GPA of 6.64/10</strong></td>
-    </tr>
-  </table>
+  <!-- Work Experience -->
+  <section>
+    <h2>Work Experience</h2>
+    
+    <div class="job">
+      <div class="job-header">
+        <span>Technical Consulting Engineer – Cisco</span>
+        <span class="date">Present</span>
+      </div>
+      <p><a href="tenfour.html">Details &amp; Projects</a></p>
+    </div>
 
-  <h3><u>Certifications</u></h3>
-  <table cellspacing="20">
-    <tr>
-      <td>Cisco Certified Entry Networking Technician (CCENT)</td>
-      <td><a href="ccent.html">View Certificate</a></td>
-    </tr>
-    <tr>
-      <td>CCNA – Routing and Switching</td>
-      <td><a href="ccna.html">View Certificate</a></td>
-    </tr>
-    <tr>
-      <td>IT Infrastructure Library (ITIL) </td>
-      <td><a href="itil.html">View Certificate</a></td>
-    </tr>
-    <tr>
-      <td>Ansible for Network Engineers using GNS3 </td>
-      <td><a href="Ansible.html">View Certificate</a></td>
-    </tr>
-    <tr>
-      <td>Wireshark 2 Complete course </td>
-      <td><a href="Wireshark.html">View Certificate</a></td>
-    </tr>
-    <tr>
-      <td>Cisco Unified Communications Manager Course </td>
-      <td><a href="CUCM.html">View Certificate</a></td>
-    </tr>
-    <tr>
-      <td>Cisco Unity Connection Course </td>
-      <td><a href="CUC.html">View Certificate</a></td>
-    </tr>
-  </table>
+    <div class="job">
+      <div class="job-header">
+        <span>Associate Network Engineer – Tenfour</span>
+        <span class="date">July 2019 – Present</span>
+      </div>
+    </div>
 
+    <div class="job">
+      <div class="job-header">
+        <span>Telecommunications Engineer – Essence USA Inc</span>
+        <span class="date">Jan – Oct 2019</span>
+      </div>
+    </div>
 
+    <div class="job">
+      <div class="job-header">
+        <span>Network Administrator - Emagination Tech Camps USA</span>
+        <span class="date">June – Aug 2018</span>
+      </div>
+    </div>
+  </section>
 
-  <h3><u>Skills</u></h3>
-  <table cellspacing="10">
-    <tr>
-      <td>Networking hardware</td>
-      <td>⭐⭐⭐⭐⛤</td>
-      <td>Microsoft Powerpoint</td>
-      <td>⭐⭐⭐⭐⭐</td>
-    </tr>
-    <tr>
-      <td>TCP/IP protocol stack</td>
-      <td>⭐⭐⭐⭐⛤</td>
-      <td>Microsoft Word</td>
-      <td>⭐⭐⭐⭐⭐</td>
-    </tr>
-    <tr>
-      <td>Unified Communications</td>
-      <td>⭐⭐⭐⭐⭐</td>
-      <td>Microsoft Excel</td>
-      <td>⭐⭐⭐⭐⛤</td>
-    </tr>
-    <tr>
-      <td>Customer Service</td>
-      <td>⭐⭐⭐⭐⭐</td>
-      <td>Microsoft Access</td>
-      <td>⭐⭐⭐⛤⛤</td>
-    </tr>
-    <tr>
-      <td>Leadership and Management</td>
-      <td>⭐⭐⭐⭐⭐</td>
-      <td>Spanish</td>
-      <td>⭐⭐⭐⛤⛤</td>
-    </tr>
-    <tr>
-      <td>Wireshark</td>
-      <td>⭐⭐⭐⭐⭐</td>
-      <td>Python Programming</td>
-      <td>⭐⭐⭐⛤⛤</td>
-    </tr>
-    <tr>
-      <td>HTML</td>
-      <td>⭐⭐⭐⛤⛤</td>
-      <td>Drumming</td>
-      <td>⭐⭐⭐⛤⛤</td>
-    </tr>
-    <tr>
-      <td>Web Development</td>
-      <td>⭐⭐⛤⛤⛤</td>
-      <td>Ethical hacking</td>
-      <td>⭐⭐⭐⛤⛤</td>
-    </tr>
-  </table>
+  <!-- Academic Qualifications -->
+  <section>
+    <h2>Academic Qualifications</h2>
+    <div class="edu-item">
+      <div class="edu-header">
+        <span><a href="https://www.njit.edu/" target="_blank">New Jersey Institute of Technology</a></span>
+        <span>GPA: 3.95 / 4.0</span>
+      </div>
+      <p>Master of Science in Telecommunications</p>
+    </div>
+    <div class="edu-item" style="margin-top: 20px;">
+      <div class="edu-header">
+        <span><a href="https://www.dbit.in/" target="_blank">Don Bosco Institute Of Technology</a></span>
+        <span>GPA: 6.64 / 10.0</span>
+      </div>
+      <p>Bachelor of Engineering in Electronics and Telecommunications</p>
+    </div>
+  </section>
 
-  <hr>
+  <!-- Featured Projects & Web Apps -->
+  <section>
+    <h2>Featured Projects &amp; Web Apps</h2>
+    <p>Check out some of my interactive web apps and digital projects hosted on GitHub Pages:</p>
+    <ul>
+      <li><strong>Sancho's Cookbook:</strong> A responsive digital recipe collection website.</li>
+      <li><strong>Spanish Language Quiz:</strong> An interactive 100-point practice quiz for beginner Spanish.</li>
+      <li><strong>Gamified Web Quiz:</strong> A mobile-optimized 15-question web app with custom CSS animations.</li>
+    </ul>
+  </section>
 
-<p><a href="Ongoing Learning.html">My Ongoing Learning</a></p>
-<p><a href="Hobbies.html"> My Hobbies</a></p>
-<p><a href="Contact information.html">Contact Me</a></p>
+  <!-- Skills -->
+  <section>
+    <h2>Core Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-card"><strong>Networking:</strong> Hardware, TCP/IP, Wireshark, Unified Communications</div>
+      <div class="skill-card"><strong>Programming &amp; Web:</strong> Python, HTML/CSS, JavaScript, Git</div>
+      <div class="skill-card"><strong>Systems &amp; Tools:</strong> Linux / RHCSA, Ansible, Microsoft 365 Suite</div>
+      <div class="skill-card"><strong>Soft Skills:</strong> Customer Service, Leadership, Project Management</div>
+    </div>
+  </section>
 
+  <!-- Navigation / Footer Links -->
+  <div class="nav-links">
+    <a href="Ongoing Learning.html">Ongoing Learning</a>
+    <a href="Hobbies.html">Hobbies &amp; Creative</a>
+    <a href="Contact information.html">Contact Me</a>
+  </div>
 
 </body>
 
