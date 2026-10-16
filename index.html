@@ -71,24 +71,39 @@
       font-size: 1.5rem;
     }
 
-    .job, .edu-item, .cert-item {
+    .job, .edu-item {
       margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px dashed var(--border-color);
     }
 
     .job:last-child, .edu-item:last-child {
       margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
     }
 
     .job-header, .edu-header {
       display: flex;
       justify-content: space-between;
+      align-items: baseline;
       flex-wrap: wrap;
       font-weight: bold;
+    }
+
+    .job-title {
+      font-size: 1.05rem;
     }
 
     .date {
       color: var(--text-muted);
       font-size: 0.9rem;
+      font-weight: normal;
+    }
+
+    .job-link {
+      margin-top: 5px;
+      font-size: 0.95rem;
     }
 
     .skills-grid {
@@ -109,6 +124,7 @@
       gap: 20px;
       justify-content: center;
       margin-top: 40px;
+      flex-wrap: wrap;
     }
 
     .nav-links a {
@@ -155,36 +171,57 @@
     </div>
   </header>
 
-  <!-- Work Experience -->
+  <!-- Work Experience Section -->
   <section>
     <h2>Work Experience</h2>
     
     <div class="job">
       <div class="job-header">
-        <span>Technical Consulting Engineer – Cisco</span>
-        <span class="date">Present</span>
+        <span class="job-title">Technical Consulting Engineer – Cisco</span>
+        <span class="date">Current</span>
       </div>
-      <p><a href="tenfour.html">Details &amp; Projects</a></p>
-    </div>
-
-    <div class="job">
-      <div class="job-header">
-        <span>Associate Network Engineer – Tenfour</span>
-        <span class="date">July 2019 – August 2021</span>
+      <div class="job-link">
+        <a href="cisco.html">Details</a>
       </div>
     </div>
 
     <div class="job">
       <div class="job-header">
-        <span>Telecommunications Engineer – Essence USA Inc</span>
-        <span class="date">Jan – Oct 2019</span>
+        <span class="job-title">Associate Network Engineer – Tenfour</span>
+        <span class="date">July 8th, 2019 – Present</span>
+      </div>
+      <div class="job-link">
+        <a href="tenfour.html">Details</a>
       </div>
     </div>
 
     <div class="job">
       <div class="job-header">
-        <span>Network Administrator - Emagination Tech Camps USA</span>
-        <span class="date">June – Aug 2018</span>
+        <span class="job-title">Telecommunications Engineer – Essence USA Inc</span>
+        <span class="date">January 2nd – October 31st, 2019</span>
+      </div>
+      <div class="job-link">
+        <a href="Essence.html">Details</a>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="job-title">Network Administrator – Emagination Tech Camps USA</span>
+        <span class="date">June 16th – August 11th, 2018</span>
+      </div>
+      <div class="job-link">
+        <a href="Emagination.html">Details</a>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="job-title">Service and Calibration Engineer – Tribotech India Pvt. Ltd.</span>
+        <span class="date">July 1st, 2016 – June 24th, 2017</span>
+      </div>
+      <div class="job-link">
+        <a href="Tribotech.html">Details</a>
       </div>
     </div>
   </section>
@@ -199,7 +236,7 @@
       </div>
       <p>Master of Science in Telecommunications</p>
     </div>
-    <div class="edu-item" style="margin-top: 20px;">
+    <div class="edu-item">
       <div class="edu-header">
         <span><a href="https://www.dbit.in/" target="_blank">Don Bosco Institute Of Technology</a></span>
         <span>GPA: 6.64 / 10.0</span>
@@ -232,8 +269,8 @@
 
   <!-- Navigation / Footer Links -->
   <div class="nav-links">
-    <a href="Ongoing Learning.html">Ongoing Learning</a>
-    <a href="Hobbies.html">Hobbies &amp; Creative</a>
+    <a href="Ongoing Learning.html">My Ongoing Learning</a>
+    <a href="Hobbies.html">My Hobbies</a>
     <a href="Contact information.html">Contact Me</a>
   </div>
 
