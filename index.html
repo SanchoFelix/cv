@@ -1,671 +1,821 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" class="dark">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sancho Felix | Technical Consulting Engineer & Portfolio</title>
-  <style>
-    :root {
-      --bg-color: #0f172a;
-      --card-bg: #1e293b;
-      --card-border: #334155;
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --accent: #38bdf8;
-      --accent-hover: #0ea5e9;
-      --accent-glow: rgba(56, 189, 248, 0.15);
-      --terminal-bg: #090d16;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-main);
-      line-height: 1.6;
-      padding: 30px 20px;
-    }
-
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    /* Hero Banner */
-    header {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      padding: 40px;
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      gap: 35px;
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
-      margin-bottom: 30px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    header::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
-    }
-
-    header img {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid var(--accent);
-      box-shadow: 0 0 20px var(--accent-glow);
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      letter-spacing: -0.5px;
-      margin-bottom: 5px;
-    }
-
-    .typing-subtitle {
-      font-family: monospace;
-      color: var(--accent);
-      font-size: 1.1rem;
-      margin-bottom: 12px;
-    }
-
-    .bio-text {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-    }
-
-    /* Section Styling */
-    section {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      padding: 30px;
-      border-radius: 16px;
-      margin-bottom: 30px;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
-    }
-
-    h2 {
-      font-size: 1.5rem;
-      color: var(--accent);
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      border-bottom: 1px solid var(--card-border);
-      padding-bottom: 10px;
-    }
-
-    /* Experience Timeline Cards */
-    .timeline-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
-
-    .job-card {
-      background: rgba(15, 23, 42, 0.6);
-      border: 1px solid var(--card-border);
-      padding: 20px;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .job-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px var(--accent-glow);
-    }
-
-    .job-title {
-      font-weight: bold;
-      font-size: 1.05rem;
-      color: var(--text-main);
-    }
-
-    .job-company {
-      color: var(--accent);
-      font-size: 0.9rem;
-      margin: 4px 0 10px 0;
-    }
-
-    .job-date {
-      color: var(--text-muted);
-      font-size: 0.85srem;
-      font-family: monospace;
-    }
-
-    /* Interactive Skills Filter */
-    .skill-filters {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-    }
-
-    .filter-btn {
-      background: var(--bg-color);
-      border: 1px solid var(--card-border);
-      color: var(--text-muted);
-      padding: 8px 16px;
-      border-radius: 20px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      transition: all 0.2s;
-    }
-
-    .filter-btn.active, .filter-btn:hover {
-      background: var(--accent);
-      color: #0f172a;
-      font-weight: 600;
-      border-color: var(--accent);
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 15px;
-    }
-
-    .skill-pill {
-      background: var(--bg-color);
-      border: 1px solid var(--card-border);
-      padding: 14px 18px;
-      border-radius: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .skill-level {
-      color: var(--accent);
-      font-family: monospace;
-      font-size: 0.85rem;
-    }
-
-    /* Interactive Universe Grid (Hobbies, Cookbook, Music, etc.) */
-    .universe-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
-
-    .universe-card {
-      background: var(--bg-color);
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 22px;
-      transition: transform 0.2s;
-    }
-
-    .universe-card:hover {
-      transform: translateY(-3px);
-      border-color: #818cf8;
-    }
-
-    .universe-card h3 {
-      color: #c084fc;
-      margin-bottom: 10px;
-      font-size: 1.15rem;
-    }
-
-    .universe-card p {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      margin-bottom: 15px;
-    }
-
-    .interactive-btn {
-      background: transparent;
-      border: 1px solid var(--accent);
-      color: var(--accent);
-      padding: 6px 14px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 0.85rem;
-      font-weight: 500;
-      text-decoration: none;
-      display: inline-block;
-      transition: all 0.2s;
-    }
-
-    .interactive-btn:hover {
-      background: var(--accent);
-      color: var(--bg-color);
-    }
-
-    /* Terminal Console */
-    .terminal {
-      background: var(--terminal-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 20px;
-      font-family: monospace;
-      margin-top: 30px;
-    }
-
-    .terminal-header {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 15px;
-    }
-
-    .dot {
-      width: 12px; height: 12px; border-radius: 50%;
-    }
-    .dot-red { background: #ef4444; }
-    .dot-yellow { background: #f59e0b; }
-    .dot-green { background: #10b981; }
-
-    .terminal-body {
-      color: #38bdf8;
-      font-size: 0.9rem;
-      min-height: 60px;
-      max-height: 150px;
-      overflow-y: auto;
-      margin-bottom: 10px;
-    }
-
-    .terminal-input-line {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      border-top: 1px solid #1e293b;
-      padding-top: 10px;
-    }
-
-    .terminal-input-line span {
-      color: #10b981;
-    }
-
-    .terminal-input {
-      background: transparent;
-      border: none;
-      color: var(--text-main);
-      font-family: monospace;
-      font-size: 0.95rem;
-      width: 100%;
-      outline: none;
-    }
-
-    /* Modals */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-      padding: 20px;
-    }
-
-    .modal-content {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      padding: 30px;
-      border-radius: 16px;
-      max-width: 550px;
-      width: 100%;
-      position: relative;
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
-    }
-
-    .close-modal {
-      position: absolute;
-      top: 15px; right: 20px;
-      font-size: 1.5rem;
-      color: var(--text-muted);
-      cursor: pointer;
-    }
-
-    .close-modal:hover { color: var(--text-main); }
-
-    /* Footer Navigation */
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 30px;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover {
-      color: var(--accent);
-    }
-
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        text-align: center;
+  <title>Sancho Felix | Tech Portfolio & Interactive Experience</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- FontAwesome Icons for Emojis/Gems -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom Tailwind Config -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            cyber: {
+              black: '#0a0d14',
+              dark: '#111827',
+              card: '#161f33',
+              border: '#1f293d',
+              accent: '#3b82f6',
+              glow: '#60a5fa',
+              neon: '#10b981',
+              pink: '#ec4899',
+              amber: '#f59e0b'
+            }
+          },
+          fontFamily: {
+            mono: ['Fira Code', 'Courier New', 'monospace'],
+            sans: ['Inter', 'system-ui', 'sans-serif']
+          },
+          boxShadow: {
+            'glow-blue': '0 0 25px -5px rgba(59, 130, 246, 0.4)',
+            'glow-green': '0 0 25px -5px rgba(16, 185, 129, 0.4)',
+            'glow-pink': '0 0 25px -5px rgba(236, 72, 153, 0.4)'
+          }
+        }
       }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar & Glassmorphism Styles */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0a0d14;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1f293d;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #3b82f6;
+    }
+    
+    .glass-card {
+      background: rgba(22, 31, 51, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .glass-card:hover {
+      border-color: rgba(59, 130, 246, 0.3);
+    }
+
+    /* Terminal Scanlines */
+    .scanlines {
+      background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0),
+        rgba(255,255,255,0) 50%,
+        rgba(0, 0, 0, 0.25) 50%,
+        rgba(0, 0, 0, 0.25)
+      );
+      background-size: 100% 4px;
+    }
+
+    /* Typing cursor animation */
+    .cursor-blink::after {
+      content: '|';
+      animation: blink 1s infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
     }
   </style>
 </head>
 
-<body>
+<body class="bg-cyber-black text-slate-200 font-sans min-h-screen selection:bg-cyber-accent selection:text-white pb-20">
 
-  <div class="container">
+  <!-- Background Decorative Ambient Glows -->
+  <div class="fixed top-0 left-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="fixed bottom-1/3 right-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
-    <!-- Hero Header -->
-    <header>
-      <img src="images/Sancho.png" alt="Sancho profile picture" />
-      <div>
-        <h1>Sancho Felix</h1>
-        <div class="typing-subtitle">&gt; Technical Consulting Engineer @ Cisco</div>
-        <p class="bio-text">Bridging enterprise networking, Python automation, and creative web development. Alumnus of New Jersey Institute of Technology (MS Telecom, GPA 3.95).</p>
+  <!-- Main Container -->
+  <div class="max-w-6xl mx-auto px-4 py-8 relative z-10">
+
+    <!-- Top Navigation / Status Bar -->
+    <nav class="glass-card rounded-2xl px-6 py-4 flex flex-wrap items-center justify-between gap-4 mb-8">
+      <div class="flex items-center gap-3">
+        <div class="relative">
+          <img src="images/Sancho.png" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80'" alt="Sancho Felix" class="w-12 h-12 rounded-full object-cover border-2 border-cyber-accent">
+          <span class="absolute bottom-0 right-0 w-3 h-3 bg-emerald-500 border-2 border-cyber-black rounded-full animate-ping"></span>
+          <span class="absolute bottom-0 right-0 w-3 h-3 bg-emerald-500 border-2 border-cyber-black rounded-full"></span>
+        </div>
+        <div>
+          <h1 class="font-bold text-lg text-white tracking-wide">Sancho Felix</h1>
+          <p class="text-xs text-cyber-glow flex items-center gap-1 font-mono">
+            <i data-lucide="shield-check" class="w-3 h-3"></i> TCE @ Cisco Systems
+          </p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3 text-sm">
+        <button onclick="scrollToSection('skills')" class="hover:text-cyber-glow transition px-3 py-1.5 rounded-lg hover:bg-cyber-border/50 hidden md:block">Skills & Stack</button>
+        <button onclick="scrollToSection('experience')" class="hover:text-cyber-glow transition px-3 py-1.5 rounded-lg hover:bg-cyber-border/50 hidden md:block">Timeline</button>
+        <button onclick="scrollToSection('universe')" class="hover:text-cyber-glow transition px-3 py-1.5 rounded-lg hover:bg-cyber-border/50 hidden md:block">Sancho's Universe</button>
+        <button onclick="scrollToSection('cli')" class="bg-cyber-accent/20 hover:bg-cyber-accent text-cyber-glow hover:text-white border border-cyber-accent/40 px-4 py-1.5 rounded-lg transition flex items-center gap-2 font-mono text-xs">
+          <i data-lucide="terminal" class="w-3.5 h-3.5"></i> Terminal CLI
+        </button>
+      </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="glass-card rounded-3xl p-8 md:p-12 mb-10 relative overflow-hidden shadow-glow-blue border border-cyber-border">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+        
+        <div class="md:col-span-8 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-cyber-glow text-xs font-mono">
+            <span class="w-2 h-2 rounded-full bg-cyber-accent animate-pulse"></span>
+            NETWORK AUTOMATION & DEVOPS ENGINEER
+          </div>
+
+          <h2 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">
+            Hi, I'm <span class="bg-gradient-to-r from-blue-400 via-emerald-400 to-teal-300 bg-clip-text text-transparent">Sancho Felix</span>
+          </h2>
+
+          <!-- Animated Terminal Subtitle -->
+          <div class="bg-cyber-black/80 rounded-xl p-4 border border-cyber-border font-mono text-sm md:text-base text-emerald-400 flex items-center gap-2 shadow-inner">
+            <span class="text-slate-500">$</span>
+            <span id="typed-text" class="cursor-blink text-slate-100"></span>
+          </div>
+
+          <p class="text-slate-300 text-sm md:text-base leading-relaxed">
+            Technical Consulting Engineer at Cisco specializing in complex enterprise network architectures, Python scripting automation, and full-stack web applications. Beyond networking, I'm a rock climber, lead guitarist, avid outdoorsman, and culinary enthusiast.
+          </p>
+
+          <div class="flex flex-wrap gap-4 pt-2">
+            <a href="mailto:sancho.felix@example.com" class="px-5 py-2.5 bg-cyber-accent hover:bg-blue-600 text-white rounded-xl font-medium transition shadow-lg shadow-blue-500/25 flex items-center gap-2 text-sm">
+              <i data-lucide="mail" class="w-4 h-4"></i> Get in Touch
+            </a>
+            <a href="#universe" class="px-5 py-2.5 bg-cyber-dark hover:bg-cyber-border text-slate-200 border border-cyber-border rounded-xl font-medium transition flex items-center gap-2 text-sm">
+              <i data-lucide="sparkles" class="w-4 h-4 text-cyber-amber"></i> Explore My Universe
+            </a>
+          </div>
+        </div>
+
+        <div class="md:col-span-4 flex flex-col items-center justify-center">
+          <div class="relative group">
+            <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-emerald-600 rounded-3xl blur opacity-30 group-hover:opacity-75 transition duration-500"></div>
+            <img src="images/Sancho.png" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80'" alt="Sancho Felix Profile" class="relative rounded-2xl w-56 h-56 object-cover border-2 border-cyber-border shadow-2xl">
+          </div>
+          
+          <div class="mt-4 flex gap-3 text-slate-400">
+            <a href="https://github.com/SanchoFelix" target="_blank" class="p-2 glass-card rounded-lg hover:text-white transition"><i data-lucide="github" class="w-5 h-5"></i></a>
+            <a href="https://linkedin.com" target="_blank" class="p-2 glass-card rounded-lg hover:text-white transition"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+            <a href="https://www.njit.edu/" target="_blank" class="p-2 glass-card rounded-lg hover:text-white transition"><i data-lucide="graduation-cap" class="w-5 h-5"></i></a>
+          </div>
+        </div>
+
       </div>
     </header>
 
-    <!-- Experience Timeline Hub -->
-    <section>
-      <h2>Professional Experience &amp; Impact</h2>
-      <div class="timeline-grid">
-        <div class="job-card" onclick="openModal('ciscoModal')">
-          <div class="job-title">Technical Consulting Engineer</div>
-          <div class="job-company">Cisco Systems • Durham, NC</div>
-          <div class="job-date">Present</div>
-          <p class="bio-text" style="margin-top: 8px;">Delivering high-level technical consulting and network troubleshooting...</p>
+    <!-- SECTION 1: INTERACTIVE SKILL RADAR / UNIVERSE -->
+    <section id="skills" class="mb-12">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+        <div>
+          <h3 class="text-2xl font-bold text-white flex items-center gap-2">
+            <i data-lucide="cpu" class="w-6 h-6 text-cyber-glow"></i> Interactive Skill Universe
+          </h3>
+          <p class="text-slate-400 text-sm">Toggle categories to explore core technical stack, certifications, and hands-on toolkits.</p>
         </div>
 
-        <div class="job-card" onclick="openModal('tenfourModal')">
-          <div class="job-title">Associate Network Engineer</div>
-          <div class="job-company">Tenfour</div>
-          <div class="job-date">July 2019 – Present</div>
-          <p class="bio-text" style="margin-top: 8px;">Enterprise infrastructure monitoring, client support, and network deployments...</p>
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap gap-2 bg-cyber-dark p-1.5 rounded-xl border border-cyber-border">
+          <button onclick="filterSkills('all')" class="skill-btn active px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition bg-cyber-accent text-white" data-category="all">All Skills</button>
+          <button onclick="filterSkills('networking')" class="skill-btn px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition text-slate-400 hover:text-white" data-category="networking">Networking & Infrastructure</button>
+          <button onclick="filterSkills('dev')" class="skill-btn px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition text-slate-400 hover:text-white" data-category="dev">Python & Scripting</button>
+          <button onclick="filterSkills('sys')" class="skill-btn px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition text-slate-400 hover:text-white" data-category="sys">Systems & Security</button>
         </div>
+      </div>
 
-        <div class="job-card" onclick="openModal('essenceModal')">
-          <div class="job-title">Telecommunications Engineer</div>
-          <div class="job-company">Essence USA Inc</div>
-          <div class="job-date">Jan – Oct 2019</div>
-          <p class="bio-text" style="margin-top: 8px;">Managed telecom architectures and enterprise voice/data setups...</p>
-        </div>
-
-        <div class="job-card" onclick="openModal('emaginationModal')">
-          <div class="job-title">Network Administrator</div>
-          <div class="job-company">Emagination Tech Camps USA</div>
-          <div class="job-date">Summer 2018</div>
-          <p class="bio-text" style="margin-top: 8px;">Maintained camp network stability, lab hardware, and counselor coordination...</p>
-        </div>
+      <!-- Skill Grid -->
+      <div id="skills-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Dynamically injected or styled skill cards -->
       </div>
     </section>
 
-    <!-- Interactive Skills Matrix -->
-    <section>
-      <h2>Skills &amp; Technical Stack</h2>
-      <div class="skill-filters">
-        <button class="filter-btn active" onclick="filterSkills('all')">All Skills</button>
-        <button class="filter-btn" onclick="filterSkills('net')">Networking &amp; Systems</button>
-        <button class="filter-btn" onclick="filterSkills('code')">Python &amp; Web</button>
-        <button class="filter-btn" onclick="filterSkills('tools')">Tools &amp; Certs</button>
+    <!-- SECTION 2: TIMELINE & EXPERIENCE HUB -->
+    <section id="experience" class="mb-12">
+      <div class="mb-6">
+        <h3 class="text-2xl font-bold text-white flex items-center gap-2">
+          <i data-lucide="briefcase" class="w-6 h-6 text-emerald-400"></i> Career & Academic Odyssey
+        </h3>
+        <p class="text-slate-400 text-sm">Click on any role or qualification to view details, achievements, and related artifacts.</p>
       </div>
 
-      <div class="skills-grid" id="skillsGrid">
-        <div class="skill-pill" data-category="net"><span>Networking Hardware &amp; TCP/IP</span><span class="skill-level">Expert</span></div>
-        <div class="skill-pill" data-category="net"><span>Unified Communications</span><span class="skill-level">Expert</span></div>
-        <div class="skill-pill" data-category="net"><span>Linux / RHCSA Admin</span><span class="skill-level">Advanced</span></div>
-        <div class="skill-pill" data-category="code"><span>Python Automation</span><span class="skill-level">Advanced</span></div>
-        <div class="skill-pill" data-category="code"><span>HTML, CSS &amp; JavaScript</span><span class="skill-level">Intermediate</span></div>
-        <div class="skill-pill" data-category="tools"><span>Wireshark &amp; Packet Analysis</span><span class="skill-level">Expert</span></div>
-        <div class="skill-pill" data-category="tools"><span>Ansible &amp; GNS3</span><span class="skill-level">Advanced</span></div>
-        <div class="skill-pill" data-category="tools"><span>Git &amp; GitHub Pages</span><span class="skill-level">Intermediate</span></div>
+      <div class="space-y-4" id="experience-list">
+        <!-- Experience items will be dynamically generated or rendered -->
       </div>
     </section>
 
-    <!-- Sancho's Interactive Universe -->
-    <section>
-      <h2>Sancho's Interactive Universe (Hobbies, Learning &amp; Projects)</h2>
-      <div class="universe-grid">
-        
-        <!-- Music & Drumming Card -->
-        <div class="universe-card">
-          <h3>Drumming &amp; Music</h3>
-          <p>Passionate drummer and lead guitar player. Check out my performance covers on YouTube!</p>
-          <a href="https://www.youtube.com/@Sanchodrums" target="_blank" class="interactive-btn">Visit @Sanchodrums &rarr;</a>
+    <!-- SECTION 3: SANCHO'S UNIVERSE (SANDBOX & STORY HUB) -->
+    <section id="universe" class="mb-12">
+      <div class="mb-6">
+        <h3 class="text-2xl font-bold text-white flex items-center gap-2">
+          <i data-lucide="compass" class="w-6 h-6 text-cyber-amber"></i> Sancho's Interactive Universe
+        </h3>
+        <p class="text-slate-400 text-sm">Explore interactive mini-apps, personal hobbies, learning adventures, and creative projects.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+        <!-- CARD 1: Digital Cookbook Interactive Drawer -->
+        <div class="glass-card rounded-2xl p-6 border border-cyber-border flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-3 py-1 bg-amber-500/10 text-amber-400 border border-amber-500/30 rounded-full text-xs font-mono flex items-center gap-1">
+                <i data-lucide="utensils" class="w-3.5 h-3.5"></i> Digital Cookbook
+              </span>
+              <i data-lucide="chef-hat" class="w-5 h-5 text-amber-400"></i>
+            </div>
+            <h4 class="text-lg font-bold text-white mb-2">Sancho's Culinary Vault</h4>
+            <p class="text-slate-400 text-xs mb-4">A collection of custom web-documented recipes created for fast, delicious home cooking.</p>
+            
+            <!-- Category Selector -->
+            <div class="space-y-2 mb-4" id="recipe-list">
+              <!-- Recipe previews inserted here -->
+            </div>
+          </div>
+
+          <button onclick="openRecipeModal()" class="w-full py-2 bg-amber-500/20 hover:bg-amber-500 text-amber-300 hover:text-white rounded-xl text-xs font-semibold font-mono transition border border-amber-500/30 flex items-center justify-center gap-2">
+            <i data-lucide="book-open" class="w-4 h-4"></i> Open Full Recipe Vault
+          </button>
         </div>
 
-        <!-- Cookbook Card -->
-        <div class="universe-card">
-          <h3>Sancho's Cookbook</h3>
-          <p>Custom digital recipe collection hosted on GitHub Pages featuring homemade skillet meals &amp; brownies.</p>
-          <button class="interactive-btn" onclick="openModal('cookbookModal')">View Recipes</button>
+        <!-- CARD 2: Spanish Practice Mini-Quiz -->
+        <div class="glass-card rounded-2xl p-6 border border-cyber-border flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-3 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 rounded-full text-xs font-mono flex items-center gap-1">
+                <i data-lucide="languages" class="w-3.5 h-3.5"></i> Language Hub
+              </span>
+              <span class="text-xs font-mono text-slate-400" id="quiz-score">Score: 0</span>
+            </div>
+
+            <h4 class="text-lg font-bold text-white mb-2">Spanish Practice Quiz</h4>
+            <p class="text-slate-400 text-xs mb-4">Test your Spanish vocabulary with this live interactive mini-game challenge!</p>
+
+            <!-- Quiz Box -->
+            <div id="quiz-container" class="bg-cyber-black/60 p-4 rounded-xl border border-cyber-border space-y-3">
+              <!-- Dynamic quiz content -->
+            </div>
+          </div>
+
+          <button onclick="resetQuiz()" class="mt-4 w-full py-2 bg-emerald-500/20 hover:bg-emerald-500 text-emerald-300 hover:text-white rounded-xl text-xs font-semibold font-mono transition border border-emerald-500/30 flex items-center justify-center gap-2">
+            <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i> Next Question / Reset
+          </button>
         </div>
 
-        <!-- Interactive Spanish Quiz Card -->
-        <div class="universe-card">
-          <h3>Spanish Practice Quiz</h3>
-          <p>Interactive 100-point web quiz app built for practicing beginner Spanish coursework.</p>
-          <button class="interactive-btn" onclick="openModal('quizModal')">Take Mini Quiz</button>
-        </div>
+        <!-- CARD 3: Creative & Active Lifestyle Showcase -->
+        <div class="glass-card rounded-2xl p-6 border border-cyber-border flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-3 py-1 bg-pink-500/10 text-pink-400 border border-pink-500/30 rounded-full text-xs font-mono flex items-center gap-1">
+                <i data-lucide="heart" class="w-3.5 h-3.5"></i> Passions &amp; Art
+              </span>
+              <i data-lucide="guitar" class="w-5 h-5 text-pink-400"></i>
+            </div>
 
-        <!-- Outdoors & Art Card -->
-        <div class="universe-card">
-          <h3>Outdoors &amp; Canvas Art</h3>
-          <p>Rock climbing, bouldering, snowboarding, and glowing anatomical heart canvas paintings.</p>
-          <button class="interactive-btn" onclick="openModal('artModal')">Explore Gallery</button>
+            <h4 class="text-lg font-bold text-white mb-2">Music, Climbing &amp; Art</h4>
+            <p class="text-slate-400 text-xs mb-4">From bouldering V-grade problems to lead guitar rigs and canvas painting.</p>
+
+            <div class="space-y-2" id="hobbies-preview">
+              <!-- Hobbies preview dynamically injected -->
+            </div>
+          </div>
+
+          <button onclick="openHobbyModal()" class="mt-4 w-full py-2 bg-pink-500/20 hover:bg-pink-500 text-pink-300 hover:text-white rounded-xl text-xs font-semibold font-mono transition border border-pink-500/30 flex items-center justify-center gap-2">
+            <i data-lucide="mountain" class="w-4 h-4"></i> View Creative Gallery
+          </button>
         </div>
 
       </div>
     </section>
 
-    <!-- Interactive Terminal CLI -->
-    <div class="terminal">
-      <div class="terminal-header">
-        <div class="dot dot-red"></div>
-        <div class="dot dot-yellow"></div>
-        <div class="dot dot-green"></div>
+    <!-- SECTION 4: INTERACTIVE CLI TERMINAL -->
+    <section id="cli" class="glass-card rounded-2xl p-6 border border-cyber-border shadow-glow-blue">
+      <div class="flex items-center justify-between pb-3 mb-4 border-b border-cyber-border">
+        <div class="flex items-center gap-2">
+          <div class="flex gap-1.5">
+            <span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-yellow-500 inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
+          </div>
+          <span class="text-xs font-mono text-slate-400 ml-2">sancho@cisco-terminal:~</span>
+        </div>
+        <span class="text-xs font-mono text-cyber-glow">Type 'help' for commands</span>
       </div>
-      <div class="terminal-body" id="terminalOutput">
-        Welcome to Sancho's Interactive CLI v2.6. Type 'help' for available commands.
+
+      <!-- Terminal Output Screen -->
+      <div id="terminal-output" class="font-mono text-xs md:text-sm space-y-2 max-h-56 overflow-y-auto mb-4 p-3 bg-cyber-black/90 rounded-xl border border-cyber-border text-slate-300 scanlines">
+        <div>Welcome to Sancho's Terminal v2.4.0 [Type <span class="text-cyber-glow font-bold">'help'</span> for instructions]</div>
       </div>
-      <div class="terminal-input-line">
-        <span>visitor@sancho-cv:~$</span>
-        <input type="text" class="terminal-input" id="terminalInput" placeholder="Type a command (e.g. help, skills, cisco, contact)..." onkeypress="handleTerminal(event)">
-      </div>
-    </div>
 
-    <!-- Footer Navigation Links -->
-    <div class="footer-links">
-      <a href="Ongoing Learning.html">Ongoing Learning</a>
-      <a href="Hobbies.html">Hobbies Hub</a>
-      <a href="Contact information.html">Contact Me</a>
-      <a href="https://github.com/SanchoFelix/cv" target="_blank">GitHub Repository</a>
-    </div>
+      <!-- Terminal Input Line -->
+      <form id="terminal-form" onsubmit="handleCliCommand(event)" class="flex items-center gap-2 bg-cyber-black p-2 rounded-xl border border-cyber-border">
+        <span class="text-emerald-400 font-mono text-sm pl-2">&gt;</span>
+        <input type="text" id="cli-input" class="bg-transparent text-white font-mono text-sm w-full focus:outline-none placeholder-slate-600" placeholder="e.g. 'skills', 'cisco', 'hobbies', 'secret'" autocomplete="off">
+        <button type="submit" class="px-3 py-1 bg-cyber-accent text-white rounded-lg text-xs font-mono hover:bg-blue-600 transition">Exec</button>
+      </form>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="mt-12 text-center text-xs text-slate-500 space-y-2">
+      <p>&copy; 2026 Sancho Felix &bull; Technical Consulting Engineer & Developer Portfolio</p>
+      <p class="font-mono text-slate-600">Built with HTML5, Tailwind CSS, JavaScript &amp; Lucide Icons</p>
+    </footer>
 
   </div>
 
-  <!-- Modals -->
+  <!-- MODAL OVERLAYS -->
 
-  <!-- Cisco Modal -->
-  <div class="modal" id="ciscoModal">
-    <div class="modal-content">
-      <span class="close-modal" onclick="closeModal('ciscoModal')">&times;</span>
-      <h3 style="color:var(--accent); margin-bottom:10px;">Technical Consulting Engineer – Cisco</h3>
-      <p style="color:var(--text-muted); margin-bottom:15px;">Durham, North Carolina • Current</p>
-      <ul style="padding-left:20px; color:var(--text-main); font-size:0.95rem; line-height:1.7;">
-        <li>Provide advanced engineering consulting and support for enterprise network architectures.</li>
-        <li>Automate diagnostic workflows and operational tasks using Python scripts.</li>
-        <li>Troubleshoot complex routing, switching, and protocol interactions.</li>
-      </ul>
+  <!-- Modal 1: Experience Detail Modal -->
+  <div id="modal-exp" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="glass-card bg-cyber-dark border border-cyber-border rounded-2xl max-w-xl w-full p-6 relative max-h-[85vh] overflow-y-auto">
+      <button onclick="closeModal('modal-exp')" class="absolute top-4 right-4 p-2 text-slate-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+      <div id="modal-exp-content"></div>
     </div>
   </div>
 
-  <!-- Tenfour Modal -->
-  <div class="modal" id="tenfourModal">
-    <div class="modal-content">
-      <span class="close-modal" onclick="closeModal('tenfourModal')">&times;</span>
-      <h3 style="color:var(--accent); margin-bottom:10px;">Associate Network Engineer – Tenfour</h3>
-      <p style="color:var(--text-muted); margin-bottom:15px;">July 2019 – Present</p>
-      <ul style="padding-left:20px; color:var(--text-main); font-size:0.95rem; line-height:1.7;">
-        <li>Managed global unified communications and network reliability for enterprise clients.</li>
-        <li>Utilized Wireshark for deep packet inspection and root-cause analysis.</li>
-      </ul>
+  <!-- Modal 2: Recipe Vault Modal -->
+  <div id="modal-recipe" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="glass-card bg-cyber-dark border border-cyber-border rounded-2xl max-w-2xl w-full p-6 relative max-h-[85vh] overflow-y-auto">
+      <button onclick="closeModal('modal-recipe')" class="absolute top-4 right-4 p-2 text-slate-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+      <h3 class="text-2xl font-bold text-amber-400 mb-2 flex items-center gap-2"><i data-lucide="utensils" class="w-6 h-6"></i> Sancho's Digital Recipe Vault</h3>
+      <p class="text-xs text-slate-400 mb-6">Signature dishes and quick weeknight favorites perfected with exact measurements and steps.</p>
+      <div id="modal-recipe-content" class="space-y-6"></div>
     </div>
   </div>
 
-  <!-- Essence Modal -->
-  <div class="modal" id="essenceModal">
-    <div class="modal-content">
-      <span class="close-modal" onclick="closeModal('essenceModal')">&times;</span>
-      <h3 style="color:var(--accent); margin-bottom:10px;">Telecommunications Engineer – Essence USA Inc</h3>
-      <p style="color:var(--text-muted); margin-bottom:15px;">Jan 2019 – Oct 2019</p>
-      <ul style="padding-left:20px; color:var(--text-main); font-size:0.95rem; line-height:1.7;">
-        <li>Implemented voice and telecommunication systems configurations.</li>
-        <li>Collaborated with regional engineering teams on site rollouts.</li>
-      </ul>
+  <!-- Modal 3: Creative / Hobby Modal -->
+  <div id="modal-hobby" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="glass-card bg-cyber-dark border border-cyber-border rounded-2xl max-w-2xl w-full p-6 relative max-h-[85vh] overflow-y-auto">
+      <button onclick="closeModal('modal-hobby')" class="absolute top-4 right-4 p-2 text-slate-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+      <h3 class="text-2xl font-bold text-pink-400 mb-2 flex items-center gap-2"><i data-lucide="sparkles" class="w-6 h-6"></i> Passions, Music &amp; Outdoors</h3>
+      <p class="text-xs text-slate-400 mb-6">A look into life outside the terminal.</p>
+      <div id="modal-hobby-content" class="space-y-6"></div>
     </div>
   </div>
 
-  <!-- Emagination Modal -->
-  <div class="modal" id="emaginationModal">
-    <div class="modal-content">
-      <span class="close-modal" onclick="closeModal('emaginationModal')">&times;</span>
-      <h3 style="color:var(--accent); margin-bottom:10px;">Network Administrator – Emagination Tech Camps</h3>
-      <p style="color:var(--text-muted); margin-bottom:15px;">Summer 2018</p>
-      <ul style="padding-left:20px; color:var(--text-main); font-size:0.95rem; line-height:1.7;">
-        <li>Maintained camp lab network infrastructure, Wi-Fi stability, and equipment calibration.</li>
-      </ul>
-    </div>
-  </div>
 
-  <!-- Cookbook Modal -->
-  <div class="modal" id="cookbookModal">
-    <div class="modal-content">
-      <span class="close-modal" onclick="closeModal('cookbookModal')">&times;</span>
-      <h3 style="color:#c084fc; margin-bottom:10px;">Sancho's Digital Cookbook</h3>
-      <p style="color:var(--text-muted); margin-bottom:15px;">A responsive recipe web app hosted on GitHub Pages.</p>
-      <ul style="padding-left:20px; color:var(--text-main); font-size:0.95rem; line-height:1.7;">
-        <li><strong>Honey Garlic Chicken:</strong> Sweet and savory skillet glaze with fresh herbs.</li>
-        <li><strong>Skillet Sausage &amp; Peppers:</strong> Rustic comfort meal packed with flavor.</li>
-        <li><strong>Fudgy Cocoa Brownies:</strong> Rich homemade baked treats.</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- Mini Quiz Modal -->
-  <div class="modal" id="quizModal">
-    <div class="modal-content">
-      <span class="close-modal" onclick="closeModal('quizModal')">&times;</span>
-      <h3 style="color:#c084fc; margin-bottom:10px;">Spanish Language Quick Quiz</h3>
-      <p id="quizQuestion" style="margin-bottom:15px; font-weight:500;">What is the Spanish translation for "Technical Consulting Engineer"?</p>
-      <div id="quizOptions" style="display:flex; flex-direction:column; gap:10px;">
-        <button class="filter-btn" onclick="checkQuiz(false)" style="text-align:left;">A) Ingeniero de Redes Inalámbricas</button>
-        <button class="filter-btn" onclick="checkQuiz(true)" style="text-align:left;">B) Ingeniero Consultor Técnico</button>
-        <button class="filter-btn" onclick="checkQuiz(false)" style="text-align:left;">C) Administrador de Sistemas</button>
-      </div>
-      <p id="quizResult" style="margin-top:15px; font-weight:bold; font-family:monospace;"></p>
-    </div>
-  </div>
-
-  <!-- Art & Outdoors Modal -->
-  <div class="modal" id="artModal">
-    <div class="modal-content">
-      <span class="close-modal" onclick="closeModal('artModal')">&times;</span>
-      <h3 style="color:#c084fc; margin-bottom:10px;">Art &amp; Outdoor Adventures</h3>
-      <ul style="padding-left:20px; color:var(--text-main); font-size:0.95rem; line-height:1.7;">
-        <li><strong>Canvas Art:</strong> Glowing anatomical heart paintings on dark acrylic backdrops.</li>
-        <li><strong>Climbing &amp; Hiking:</strong> Indoor bouldering, Zion National Park (The Narrows &amp; Angels Landing), and Havasupai Waterfalls.</li>
-        <li><strong>Board Sports:</strong> Snowboarding and skateboarding sessions.</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- Scripting for Interactivity -->
+  <!-- JAVASCRIPT APP LOGIC -->
   <script>
-    // Modal controls
-    function openModal(modalId) {
-      document.getElementById(modalId).style.display = 'flex';
-    }
-    function closeModal(modalId) {
-      document.getElementById(modalId).style.display = 'none';
-    }
-    window.onclick = function(event) {
-      if (event.target.classList.contains('modal')) {
-        event.target.style.display = 'none';
+    // --- 1. DATA STRUCTURES ---
+    const SKILLS_DATA = [
+      { name: "Networking Hardware & Protocols", category: "networking", level: 95, icon: "network", tags: ["BGP", "OSPF", "Cisco IOS", "Switching"] },
+      { name: "TCP/IP Protocol Stack", category: "networking", level: 95, icon: "layers", tags: ["Subnetting", "Packet Capture", "Wireshark"] },
+      { name: "Unified Communications", category: "networking", level: 90, icon: "phone-call", tags: ["CUCM", "CUC", "SIP", "VoIP"] },
+      { name: "Python Automation", category: "dev", level: 85, icon: "code", tags: ["Scripting", "Netmiko", "APIs", "Data Parsing"] },
+      { name: "Web Development", category: "dev", level: 80, icon: "layout", tags: ["HTML5", "Tailwind CSS", "JavaScript", "Git"] },
+      { name: "Linux Systems Administration", category: "sys", level: 85, icon: "terminal", tags: ["RedHat RHCSA", "Bash", "SSH"] },
+      { name: "Ethical Hacking & Social Eng.", category: "sys", level: 78, icon: "shield-alert", tags: ["Penetration Testing", "Security"] },
+      { name: "Ansible Infrastructure Automation", category: "dev", level: 82, icon: "cpu", tags: ["Playbooks", "GNS3 Labs"] }
+    ];
+
+    const EXPERIENCE_DATA = [
+      {
+        id: "cisco",
+        role: "Technical Consulting Engineer",
+        company: "Cisco Systems",
+        period: "Current",
+        shortDesc: "Provide high-level engineering support, enterprise network troubleshooting, and Python automation.",
+        fullDesc: "Responsible for resolving tier-3 complex network infrastructure challenges for global enterprise clients. Specialize in routing/switching, IP telecommunications, network automation using Python scripting, and collaborating with cross-functional software teams.",
+        highlights: ["Automated routine diagnostic logs gathering with custom Python tools.", "High SLA success rate resolving enterprise customer network outages.", "Hands-on expertise in Cisco enterprise ecosystems."],
+        badge: "Present Role",
+        badgeColor: "bg-blue-500/20 text-blue-400 border-blue-500/40"
+      },
+      {
+        id: "tenfour",
+        role: "Associate Network Engineer",
+        company: "Tenfour",
+        period: "July 2019 – Present",
+        shortDesc: "Managed enterprise network deployments, WAN connectivity, and proactive client monitoring.",
+        fullDesc: "Configured router/switch hardware, conducted network topology audits, and ensured high-availability SLA standards for managed service infrastructure.",
+        highlights: ["Configured 100+ routers & switches.", "Managed network monitoring dashboards.", "Provided technical escalation support."],
+        badge: "Enterprise Managed Services",
+        badgeColor: "bg-emerald-500/20 text-emerald-400 border-emerald-500/40"
+      },
+      {
+        id: "essence",
+        role: "Telecommunications Engineer",
+        company: "Essence USA Inc",
+        period: "Jan 2019 – Oct 2019",
+        shortDesc: "Focus on telecom architecture, cellular gateways, and IoT integration.",
+        fullDesc: "Tested telecommunications equipment, managed RF signal reliability, and configured smart IoT connectivity nodes for safety and care solution frameworks.",
+        highlights: ["Field tested RF signal coverage.", "Configured IoT gateway devices."],
+        badge: "Telecom & IoT",
+        badgeColor: "bg-purple-500/20 text-purple-400 border-purple-500/40"
+      },
+      {
+        id: "emagination",
+        role: "Network Administrator",
+        company: "Emagination Tech Camps USA",
+        period: "June 2018 – Aug 2018",
+        shortDesc: "Maintained local camp lab infrastructure, VLANs, and firewall security.",
+        fullDesc: "Architected local campus networks for tech camp operations, resolved bandwidth bottlenecks, and maintained secure user access controls.",
+        highlights: ["Maintained 50+ workstation camp lab.", "Configured wireless APs and guest VLANs."],
+        badge: "Systems Administration",
+        badgeColor: "bg-amber-500/20 text-amber-400 border-amber-500/40"
+      },
+      {
+        id: "njit",
+        role: "Master of Science in Telecommunications",
+        company: "New Jersey Institute of Technology",
+        period: "GPA 3.95 / 4.0",
+        shortDesc: "Advanced degree focused on IP Networking, Wireless Communications, and System Security.",
+        fullDesc: "Graduated with honors (3.95 GPA). Coursework included Advanced Computer Networks, Mobile Wireless Communications, TCP/IP Security, and Network Architecture.",
+        highlights: ["Graduate GPA: 3.95 / 4.0", "Specialization in Telecommunications Systems."],
+        badge: "Academic Degree",
+        badgeColor: "bg-teal-500/20 text-teal-400 border-teal-500/40"
       }
+    ];
+
+    const RECIPES_DATA = [
+      {
+        title: "Cast Iron Skillet Sausage & Veggies",
+        time: "25 Mins",
+        prep: "Easy",
+        ingredients: ["Smoked Sausage", "Bell Peppers", "Red Onion", "Garlic Powder", "Olive Oil", "Paprika"],
+        steps: "Slice sausage and peppers. Sear sausage in hot cast iron skillet until caramelized. Add peppers, onions, and spices. Toss for 8 minutes until vibrant and tender."
+      },
+      {
+        title: "Honey Garlic Glazed Chicken",
+        time: "20 Mins",
+        prep: "Quick",
+        ingredients: ["Chicken Thighs", "Honey", "Soy Sauce", "Minced Garlic", "Butter", "Red Pepper Flakes"],
+        steps: "Sear seasoned chicken thighs in butter. Mix honey, soy sauce, and garlic in a small cup. Pour over chicken and reduce until glossy glaze forms."
+      },
+      {
+        title: "Fudgy Cocoa Brownies",
+        time: "40 Mins",
+        prep: "Dessert",
+        ingredients: ["Unsweetened Cocoa Powder", "Melted Butter", "Sugar", "Eggs", "Flour", "Dark Chocolate Chips"],
+        steps: "Whisk melted butter and cocoa powder. Beat in eggs and sugar until shiny. Fold in flour and chocolate chips. Bake at 350°F for 22 minutes."
+      }
+    ];
+
+    const SPANISH_QUIZ_DATA = [
+      { question: "What does 'Red de computadoras' mean?", options: ["Computer Network", "Wireless Router", "Cyber Security", "Database System"], answer: 0 },
+      { question: "How do you say 'Software Engineer' in Spanish?", options: ["Ingeniero de Sistemas", "Ingeniero de Software", "Programador de Redes", "Técnico de Hardware"], answer: 1 },
+      { question: "What is 'Servidor' in English?", options: ["Service", "Server", "Storage", "Supplier"], answer: 1 },
+      { question: "Translate 'Base de datos':", options: ["Data Entry", "Database", "Base Station", "Digital Array"], answer: 1 }
+    ];
+
+    const HOBBIES_DATA = [
+      { title: "Rock Climbing & Bouldering", desc: "Frequent indoor bouldering and outdoor rock trips. Love solving mechanical movement puzzles on vertical walls.", icon: "mountain" },
+      { title: "Lead Guitar & Custom Rigs", desc: "Passionate lead guitarist. Experiment with alternative tunings, pedalboard signal chains, and live performances.", icon: "guitar" },
+      { title: "Glowing Canvas Heart Art", desc: "Created custom acrylic canvas artwork incorporating embedded glowing luminescent elements.", icon: "palette" },
+      { title: "Outdoor Treks (Zion & Havasupai)", desc: "Backpacking through national parks and wilderness trails including Zion Narrows and Havasu Falls.", icon: "compass" }
+    ];
+
+
+    // --- 2. TYPING EFFECT LOGIC ---
+    const TYPED_STRINGS = [
+      "Technical Consulting Engineer @ Cisco",
+      "Network Automation & Scripting with Python",
+      "Linux SysAdmin & Cyber Security Enthusiast",
+      "Guitarist, Rock Climber & Web Developer"
+    ];
+    let stringIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function typeEffect() {
+      const currentString = TYPED_STRINGS[stringIndex];
+      const targetEl = document.getElementById("typed-text");
+
+      if (isDeleting) {
+        targetEl.textContent = currentString.substring(0, charIndex - 1);
+        charIndex--;
+      } else {
+        targetEl.textContent = currentString.substring(0, charIndex + 1);
+        charIndex++;
+      }
+
+      let speed = isDeleting ? 40 : 80;
+
+      if (!isDeleting && charIndex === currentString.length) {
+        speed = 2000; // Pause at end
+        isDeleting = true;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        stringIndex = (stringIndex + 1) % TYPED_STRINGS.length;
+        speed = 500;
+      }
+
+      setTimeout(typeEffect, speed);
     }
 
-    // Skills filtering
-    function filterSkills(category) {
-      const btns = document.querySelectorAll('.filter-btn');
-      btns.forEach(b => b.classList.remove('active'));
-      event.target.classList.add('active');
 
-      const pills = document.querySelectorAll('.skill-pill');
-      pills.forEach(p => {
-        if (category === 'all' || p.getAttribute('data-category') === category) {
-          p.style.display = 'flex';
+    // --- 3. RENDER SKILLS ---
+    function renderSkills(category = 'all') {
+      const container = document.getElementById('skills-container');
+      container.innerHTML = '';
+
+      const filtered = category === 'all' 
+        ? SKILLS_DATA 
+        : SKILLS_DATA.filter(s => s.category === category);
+
+      filtered.forEach(skill => {
+        const card = document.createElement('div');
+        card.className = "glass-card p-5 rounded-2xl border border-cyber-border hover:border-cyber-accent transition flex flex-col justify-between group";
+        
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-bold text-white text-sm group-hover:text-cyber-glow transition flex items-center gap-2">
+                <i data-lucide="${skill.icon}" class="w-4 h-4 text-cyber-glow"></i>
+                ${skill.name}
+              </span>
+              <span class="text-xs font-mono text-slate-400">${skill.level}%</span>
+            </div>
+
+            <!-- Progress Meter -->
+            <div class="w-full bg-cyber-black rounded-full h-2 mb-3 overflow-hidden border border-cyber-border">
+              <div class="bg-gradient-to-r from-blue-500 to-emerald-400 h-2 rounded-full transition-all duration-700" style="width: ${skill.level}%"></div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-1.5 mt-2">
+            ${skill.tags.map(tag => `<span class="px-2 py-0.5 bg-cyber-black text-slate-400 border border-cyber-border rounded text-[10px] font-mono">${tag}</span>`).join('')}
+          </div>
+        `;
+        container.appendChild(card);
+      });
+
+      lucide.createIcons();
+    }
+
+    function filterSkills(cat) {
+      document.querySelectorAll('.skill-btn').forEach(btn => {
+        if (btn.getAttribute('data-category') === cat) {
+          btn.className = "skill-btn active px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition bg-cyber-accent text-white";
         } else {
-          p.style.display = 'none';
+          btn.className = "skill-btn px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition text-slate-400 hover:text-white";
         }
       });
+      renderSkills(cat);
     }
 
-    // Quiz logic
-    function checkQuiz(isCorrect) {
-      const res = document.getElementById('quizResult');
-      if (isCorrect) {
-        res.style.color = '#10b981';
-        res.innerText = 'Correct! ¡Excelente trabajo!';
+
+    // --- 4. RENDER EXPERIENCE TIMELINE ---
+    function renderExperience() {
+      const container = document.getElementById('experience-list');
+      container.innerHTML = '';
+
+      EXPERIENCE_DATA.forEach(exp => {
+        const card = document.createElement('div');
+        card.className = "glass-card rounded-2xl p-5 border border-cyber-border hover:border-cyber-glow transition cursor-pointer";
+        card.onclick = () => openExperienceModal(exp.id);
+
+        card.innerHTML = `
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+            <div class="flex items-center gap-3">
+              <span class="px-2.5 py-1 rounded-full text-[11px] font-mono border ${exp.badgeColor}">${exp.badge}</span>
+              <h4 class="text-base font-bold text-white">${exp.role}</h4>
+            </div>
+            <span class="text-xs font-mono text-slate-400">${exp.period}</span>
+          </div>
+
+          <p class="text-xs text-cyber-glow font-medium mb-2">${exp.company}</p>
+          <p class="text-xs text-slate-300 leading-relaxed mb-3">${exp.shortDesc}</p>
+
+          <div class="flex items-center gap-1 text-xs text-cyber-accent font-mono">
+            <span>View detailed responsibilities &amp; achievements</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+
+      lucide.createIcons();
+    }
+
+    function openExperienceModal(id) {
+      const exp = EXPERIENCE_DATA.find(e => e.id === id);
+      if (!exp) return;
+
+      const content = document.getElementById('modal-exp-content');
+      content.innerHTML = `
+        <span class="px-2.5 py-1 rounded-full text-xs font-mono border ${exp.badgeColor} inline-block mb-3">${exp.badge}</span>
+        <h3 class="text-2xl font-bold text-white mb-1">${exp.role}</h3>
+        <p class="text-cyber-glow font-medium text-sm mb-4">${exp.company} &bull; <span class="text-slate-400">${exp.period}</span></p>
+
+        <p class="text-sm text-slate-300 leading-relaxed mb-6">${exp.fullDesc}</p>
+
+        <h4 class="text-xs font-mono text-slate-400 uppercase tracking-wider mb-3">Key Highlights & Impact</h4>
+        <ul class="space-y-2 mb-6">
+          ${exp.highlights.map(h => `
+            <li class="flex items-start gap-2 text-xs text-slate-300">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+              <span>${h}</span>
+            </li>
+          `).join('')}
+        </ul>
+
+        <button onclick="closeModal('modal-exp')" class="w-full py-2 bg-cyber-accent text-white rounded-xl text-xs font-mono font-semibold">Close Panel</button>
+      `;
+
+      document.getElementById('modal-exp').classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+
+    // --- 5. SPANISH QUIZ LOGIC ---
+    let currentQuizIndex = 0;
+    let quizScore = 0;
+
+    function renderQuiz() {
+      const container = document.getElementById('quiz-container');
+      const item = SPANISH_QUIZ_DATA[currentQuizIndex];
+
+      container.innerHTML = `
+        <p class="text-xs font-semibold text-slate-200 mb-3">${item.question}</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          ${item.options.map((opt, idx) => `
+            <button onclick="checkAnswer(${idx})" class="p-2 bg-cyber-dark hover:bg-cyber-border text-left rounded-lg text-xs text-slate-300 border border-cyber-border transition">
+              ${opt}
+            </button>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    function checkAnswer(selectedIdx) {
+      const item = SPANISH_QUIZ_DATA[currentQuizIndex];
+      const container = document.getElementById('quiz-container');
+
+      if (selectedIdx === item.answer) {
+        quizScore += 25;
+        document.getElementById('quiz-score').textContent = `Score: ${quizScore}`;
+        container.innerHTML = `
+          <div class="p-3 bg-emerald-500/20 border border-emerald-500/40 rounded-lg text-emerald-300 text-xs font-mono">
+            &check; Correct! Excellent job. (+25 pts)
+          </div>
+        `;
       } else {
-        res.style.color = '#ef4444';
-        res.innerText = 'Incorrect. Try again!';
+        container.innerHTML = `
+          <div class="p-3 bg-red-500/20 border border-red-500/40 rounded-lg text-red-300 text-xs font-mono">
+            &cross; Incorrect! Correct answer was: "${item.options[item.answer]}".
+          </div>
+        `;
       }
     }
 
-    // Terminal CLI logic
-    function handleTerminal(e) {
-      if (e.key === 'Enter') {
-        const input = document.getElementById('terminalInput');
-        const output = document.getElementById('terminalOutput');
-        const cmd = input.value.trim().toLowerCase();
+    function resetQuiz() {
+      currentQuizIndex = (currentQuizIndex + 1) % SPANISH_QUIZ_DATA.length;
+      renderQuiz();
+    }
 
-        let response = `&gt; ${input.value}\n`;
 
-        if (cmd === 'help') {
-          response += `Available commands:\n - skills: View technical expertise\n - cisco: Current role details\n - drums: YouTube channel info\n - contact: Get in touch\n - clear: Clear console`;
-        } else if (cmd === 'skills') {
-          response += `Core Stack: Python, Networking Hardware, TCP/IP, Wireshark, Linux, HTML/CSS, Git.`;
-        } else if (cmd === 'cisco') {
-          response += `Working as a Technical Consulting Engineer at Cisco (Durham, NC).`;
-        } else if (cmd === 'drums') {
-          response += `Drumming channel: https://www.youtube.com/@Sanchodrums`;
-        } else if (cmd === 'contact') {
-          response += `Reach out via the contact page link in the footer!`;
-        } else if (cmd === 'clear') {
+    // --- 6. RECIPES & HOBBIES RENDER ---
+    function renderUniversePreviews() {
+      // Recipe list preview
+      const recipeList = document.getElementById('recipe-list');
+      recipeList.innerHTML = RECIPES_DATA.map(r => `
+        <div class="p-2.5 bg-cyber-black/60 rounded-xl border border-cyber-border flex items-center justify-between text-xs">
+          <div>
+            <p class="font-medium text-slate-200">${r.title}</p>
+            <p class="text-[10px] text-slate-400">${r.time} &bull; ${r.prep}</p>
+          </div>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
+        </div>
+      `).join('');
+
+      // Hobbies preview
+      const hobbiesList = document.getElementById('hobbies-preview');
+      hobbiesList.innerHTML = HOBBIES_DATA.slice(0, 3).map(h => `
+        <div class="p-2.5 bg-cyber-black/60 rounded-xl border border-cyber-border flex items-center gap-3 text-xs">
+          <i data-lucide="${h.icon}" class="w-4 h-4 text-pink-400 flex-shrink-0"></i>
+          <div>
+            <p class="font-medium text-slate-200">${h.title}</p>
+          </div>
+        </div>
+      `).join('');
+
+      lucide.createIcons();
+    }
+
+    function openRecipeModal() {
+      const content = document.getElementById('modal-recipe-content');
+      content.innerHTML = RECIPES_DATA.map(r => `
+        <div class="p-4 bg-cyber-black/70 rounded-xl border border-cyber-border">
+          <div class="flex items-center justify-between mb-2">
+            <h4 class="font-bold text-white text-base">${r.title}</h4>
+            <span class="text-xs font-mono text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/30">${r.time}</span>
+          </div>
+          <div class="flex flex-wrap gap-1.5 mb-3">
+            ${r.ingredients.map(i => `<span class="px-2 py-0.5 bg-cyber-dark text-slate-300 rounded text-[10px] font-mono border border-cyber-border">${i}</span>`).join('')}
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">${r.steps}</p>
+        </div>
+      `).join('');
+
+      document.getElementById('modal-recipe').classList.remove('hidden');
+    }
+
+    function openHobbyModal() {
+      const content = document.getElementById('modal-hobby-content');
+      content.innerHTML = HOBBIES_DATA.map(h => `
+        <div class="p-4 bg-cyber-black/70 rounded-xl border border-cyber-border flex items-start gap-4">
+          <div class="p-3 bg-pink-500/10 border border-pink-500/30 rounded-xl text-pink-400">
+            <i data-lucide="${h.icon}" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <h4 class="font-bold text-white text-sm mb-1">${h.title}</h4>
+            <p class="text-xs text-slate-300 leading-relaxed">${h.desc}</p>
+          </div>
+        </div>
+      `).join('');
+
+      document.getElementById('modal-hobby').classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+
+    // --- 7. TERMINAL CLI LOGIC ---
+    function handleCliCommand(e) {
+      e.preventDefault();
+      const input = document.getElementById('cli-input');
+      const cmd = input.value.trim().toLowerCase();
+      const output = document.getElementById('terminal-output');
+
+      if (!cmd) return;
+
+      // Append user command
+      const cmdLine = document.createElement('div');
+      cmdLine.innerHTML = `<span class="text-emerald-400">&gt; ${cmd}</span>`;
+      output.appendChild(cmdLine);
+
+      // Process command
+      const response = document.createElement('div');
+      response.className = "text-slate-300 pl-2 border-l-2 border-cyber-accent";
+
+      switch (cmd) {
+        case 'help':
+          response.innerHTML = `Available commands: <span class="text-cyber-glow">'skills'</span>, <span class="text-cyber-glow">'cisco'</span>, <span class="text-cyber-glow">'hobbies'</span>, <span class="text-cyber-glow">'contact'</span>, <span class="text-cyber-glow">'clear'</span>, <span class="text-cyber-glow">'secret'</span>`;
+          break;
+        case 'skills':
+          response.innerHTML = `Core Tech: Python Automation, BGP/OSPF, TCP/IP, Wireshark, CUCM, Linux RHCSA, HTML/CSS/JS, Ansible.`;
+          break;
+        case 'cisco':
+          response.innerHTML = `Current Role: Technical Consulting Engineer @ Cisco Systems. Focus on enterprise network resolution & automation.`;
+          break;
+        case 'hobbies':
+          response.innerHTML = `Sancho's Passions: Rock Climbing/Bouldering, Lead Guitar Rigs, Custom Recipe Vault, Outdoor Backpacking.`;
+          break;
+        case 'contact':
+          response.innerHTML = `Email: sancho.felix@example.com | GitHub: github.com/SanchoFelix`;
+          break;
+        case 'secret':
+          response.innerHTML = `🎉 Easter Egg Unlocked! "Always keep learning and building awesome things." - Sancho`;
+          break;
+        case 'clear':
           output.innerHTML = '';
           input.value = '';
           return;
-        } else {
-          response += `Command not recognized. Type 'help' for options.`;
-        }
-
-        output.innerText += '\n\n' + response;
-        output.scrollTop = output.scrollHeight;
-        input.value = '';
+        default:
+          response.innerHTML = `Command not recognized: '${cmd}'. Type <span class="text-cyber-glow">'help'</span> for list of commands.`;
       }
+
+      output.appendChild(response);
+      output.scrollTop = output.scrollHeight;
+      input.value = '';
     }
+
+
+    // --- 8. UTILS ---
+    function closeModal(id) {
+      document.getElementById(id).classList.add('hidden');
+    }
+
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+
+
+    // --- INITIALIZATION ---
+    window.onload = function() {
+      typeEffect();
+      renderSkills('all');
+      renderExperience();
+      renderQuiz();
+      renderUniversePreviews();
+    };
   </script>
 
 </body>
